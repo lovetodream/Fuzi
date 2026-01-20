@@ -20,7 +20,12 @@
 // THE SOFTWARE.
 
 import Foundation
+#if os(Linux)
+import CLibXML2
+#else
 import libxml2
+#endif
+
 
 /**
 *  XMLError enumeration.

@@ -11,8 +11,12 @@ let package = Package(
     targets: [
         .target(name: "Fuzi",
             path: "Sources",
-//            linkerSettings: [.linkedLibrary("xml2")]
         ),
+        .systemLibrary(name: "CLibXML2", pkgConfig: "libxml-2.0",
+                       providers: [
+                        .brew(["libxml2"]),
+                        .apt(["libxml2-dev"])
+                       ]),
         .testTarget(name: "FuziTests",
                     dependencies: ["Fuzi"],
                     path: "Tests"

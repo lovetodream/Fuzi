@@ -20,7 +20,12 @@
 // THE SOFTWARE.
 
 import Foundation
+#if os(Linux)
+import CLibXML2
+#else
 import libxml2
+#endif
+
 
 /**
 *  The `Queryable` protocol is adopted by `XMLDocument`, `HTMLDocument` and `XMLElement`, denoting that they can search for elements using XPath or CSS selectors.

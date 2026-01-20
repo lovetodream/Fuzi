@@ -21,7 +21,12 @@
 
 
 import Foundation
+#if os(Linux)
+import CLibXML2
+#else
 import libxml2
+#endif
+
 
 /// Define a Swifty typealias for libxml's node type enum
 public typealias XMLNodeType = xmlElementType
