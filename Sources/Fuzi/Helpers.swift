@@ -20,12 +20,16 @@
 // THE SOFTWARE.
 
 import Foundation
-#if os(Linux)
-import CLibXML2
-#else
+#if canImport(Darwin)
+import Darwin
 import libxml2
+#elseif canImport(Glibc)
+import Glibc
+import CLibXML2
+#elseif canImport(Musl)
+import Musl
+import CLibXML2
 #endif
-
 
 // Public Helpers
 

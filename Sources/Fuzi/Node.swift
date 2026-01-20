@@ -21,12 +21,16 @@
 
 
 import Foundation
-#if os(Linux)
-import CLibXML2
-#else
+#if canImport(Darwin)
+import Darwin
 import libxml2
+#elseif canImport(Glibc)
+import Glibc
+import CLibXML2
+#elseif canImport(Musl)
+import Musl
+import CLibXML2
 #endif
-
 
 /// Define a Swifty typealias for libxml's node type enum
 public typealias XMLNodeType = xmlElementType
